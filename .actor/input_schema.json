@@ -17,36 +17,42 @@
         },
         "aws_key": {
             "title": "aws_key",
+            "description": "a",
             "type": "string",
             "editor": "textfield",
             "isSecret": true
         },
         "aws_secret": {
             "title": "aws_secret",
+            "description": "a",
             "type": "string",
             "editor": "textfield",
             "isSecret": true
         },
         "supa_url": {
             "title": "supa_url",
+            "description": "a",
             "type": "string",
             "editor": "textfield",
             "isSecret": true
         },
         "supa_key": {
             "title": "supa_key",
+            "description": "a",
             "type": "string",
             "editor": "textfield",
             "isSecret": true
         },
         "supa_service": {
             "title": "supa_service",
+            "description": "a",
             "type": "string",
             "editor": "textfield",
             "isSecret": true
         },
         "from_addr": {
             "title": "from_addr",
+            "description": "a",
             "type": "string",
             "editor": "textfield",
             "isSecret": true
