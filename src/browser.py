@@ -12,6 +12,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import select
 
+import constants
+from constants import SLEEP, strip_zero
 from time import sleep
 import sys
 
@@ -30,7 +32,7 @@ from selenium.webdriver.common.by import By
 
 from apify import Actor
 
-import acris_constants
+import constants
 
 
 
@@ -44,7 +46,7 @@ class Browser:
                  run_local=False,
                  actor_input=None):
 
-        url_doc_type = acris_constants.URL_SEARCH_HOME
+        url_doc_type = constants.URL_SEARCH_HOME
         self.small_test = small_test
         self.actor_input = actor_input
 
@@ -271,7 +273,7 @@ def run_search(browser: Browser,
     # data_dict: doc id -> [a, b, amt, p1_li, p2_li]
     #
 
-    driver.get(acris_constants.URL_SEARCH_HOME)  # guarantee return home zzz
+    driver.get(constants.URL_SEARCH_HOME)  # guarantee return home zzz
 
     enter_search_info(browser=browser, driver=driver)
     #
