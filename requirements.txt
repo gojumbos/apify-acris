@@ -1,0 +1,18 @@
+# Feel free to add your Python dependencies below. For formatting guidelines, see:
+# https://pip.pypa.io/en/latest/reference/requirements-file-format/
+
+apify ~= 1.7.0
+selenium ~= 4.14.0
+boto3~=1.34.46
+python-dotenv~=1.0.1
+airium~=0.2.6
+twilio~=8.13.0
+supabase~=2.4.0
+requests~=2.31.0
+pandas
+numpy
+bs4~=0.0.2
+beautifulsoup4~=4.12.3
+flask~=2.2.5
+pyvirtualdisplay
+lxml
