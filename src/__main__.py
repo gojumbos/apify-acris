@@ -10,7 +10,8 @@ import logging
 
 from apify.log import ActorLogFormatter
 
-from .main import main
+# from .main import main
+from main import main
 
 # Configure loggers
 handler = logging.StreamHandler()
