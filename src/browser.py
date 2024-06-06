@@ -44,7 +44,11 @@ class Browser:
                  show_head=False,
                  small_test=False,
                  run_local=False,
-                 actor_input=None):
+                 actor_input=None,
+                 actor=None):
+
+        if actor:
+            self.Actor = actor
 
         url_doc_type = constants.URL_SEARCH_HOME
         self.small_test = small_test
@@ -71,6 +75,8 @@ class Browser:
         chrome_options.add_argument('--disable-dev-shm-usage')
         # DRB 6/5:
         self.driver = webdriver.Chrome(options=chrome_options)
+
+        Actor.log.info('line 79', 'driver run headless')
 
         # sys.path.append(path) # path not needed??
         # op = webdriver.ChromeOptions()
@@ -233,19 +239,22 @@ def enter_search_info(browser: Browser, driver: webdriver):
     sleep(1)
     get_and_click_dropdown_index(driver=driver, elt_name="combox_doc_narrow",
                                  index=terms[0])
+    Actor.log('found dropdown 1, line 242')
     sleep(1)
     get_and_click_dropdown_value(driver=driver, elt_name="combox_doc_doctype",
                                  selection=terms[1])
+    Actor.log('found dropdown 2')
     sleep(1)
     get_and_click_dropdown_index(driver=driver, elt_name="cmb_date",
                                  index=terms[2])
-
+    Actor.log('found dropdown 3')
     """ DATE """
     enter_date_total(driver=driver, date=browser.date)
-
+    Actor.log('entered date')
     """ SUBMIT """
     sleep(2)
     get_and_push_button(driver=driver, elt_name="Submit2")
+    Actor.log('submitted ')
 
 
 def update_soup(driver: webdriver):
@@ -265,7 +274,7 @@ def run_search(browser: Browser,
                search_data_dict=None,
                search_item_ctr=None,
                ignore_zero_amt=True,
-               Actor=Actor):
+               ):
     """
     >> given browser, driver, retrieve and append scrape results
     to search data list

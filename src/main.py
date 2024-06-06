@@ -69,6 +69,7 @@ async def main() -> None:
                 driver = scrape.main(Actor=Actor, actor_input=actor_input)
                 title = driver.title
                 await Actor.push_data({'url': url, 'title': title})
+                driver.quit()
             # try:
             #     # Open the URL in the Selenium WebDriver
             #     driver.get(url)
@@ -94,5 +95,4 @@ async def main() -> None:
             finally:
                 await default_queue.mark_request_as_handled(request)
 
-        driver.quit()
-        driver.close()
+

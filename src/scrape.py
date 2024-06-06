@@ -70,7 +70,8 @@ def main(show_head=False, style=None, small_test=False,
                                 show_head=show_head,
                                 small_test=small_test,
                                 run_local=run_local,
-                                actor_input=actor_input
+                                actor_input=actor_input,
+                                actor=Actor
                                 )
         driver = browser.driver
         """ loop through all sub types of search type """
@@ -81,7 +82,6 @@ def main(show_head=False, style=None, small_test=False,
                                                 driver=driver,
                                                 search_data_dict=search_data_dict,
                                                 search_item_ctr=item_ctr,
-                                                Actor=Actor
                                                 )
             """ SEARCH RESULT """
             # driver.close()  # main line 99
