@@ -82,6 +82,10 @@ class Browser:
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('--ignore-certificate-errors')
+        chrome_options.add_argument('--allow-running-insecure-content')
+        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+        chrome_options.add_argument(f'user-agent={user_agent}')
+
         # DRB 6/5:
         self.driver = webdriver.Chrome(options=chrome_options)
 
@@ -134,7 +138,7 @@ class Browser:
 def get_element(driver: webdriver.Chrome, elt_name):
     """ given driver, get specific elt on page BY NAME """
     try:
-        elt = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.NAME, elt_name)))
+        elt = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.NAME, elt_name)))
         # elt = driver.find_element(By.NAME, elt_name)
         return elt
     except NoSuchElementException:
