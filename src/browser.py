@@ -264,7 +264,8 @@ def run_search(browser: Browser,
                driver: webdriver,
                search_data_dict=None,
                search_item_ctr=None,
-               ignore_zero_amt=True):
+               ignore_zero_amt=True,
+               Actor=Actor):
     """
     >> given browser, driver, retrieve and append scrape results
     to search data list
@@ -310,6 +311,7 @@ def run_search(browser: Browser,
         for doc_id in doc_id_list:
             # all_detail_buttons = get_all_detail_buttons(driver=driver)
             sleep(.4)
+            Actor.log.info(doc_id, driver.current_url)  # DRB 6/6
             driver = visit_doc_page(driver=driver, doc_id=doc_id)
             doc_html = driver.page_source
             a, b, amt, p1_li, p2_li = search.get_info_detailed_document_html(html=doc_html)

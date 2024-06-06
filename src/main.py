@@ -48,13 +48,13 @@ async def main() -> None:
             await default_queue.add_request({'url': url, 'userData': {'depth': 0}})
 
         # Launch a new Selenium Chrome WebDriver
-        Actor.log.info('Launching Chrome WebDriver...')
-        chrome_options = ChromeOptions()
-        # if Actor.config.headless:  # drb
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-        driver = webdriver.Chrome(options=chrome_options)
+        # Actor.log.info('Launching Chrome WebDriver...')
+        # chrome_options = ChromeOptions()
+        # # if Actor.config.headless:  # drb
+        # chrome_options.add_argument('--headless')
+        # chrome_options.add_argument('--no-sandbox')
+        # chrome_options.add_argument('--disable-dev-shm-usage')
+        # driver = webdriver.Chrome(options=chrome_options)
 
         # driver.get('http://www.example.com')
         # assert driver.title == 'Example Domain'
@@ -65,9 +65,8 @@ async def main() -> None:
             depth = request['userData']['depth']
             Actor.log.info(f'Scraping {url} ...')
 
-
             try:
-                scrape.main(Actor=Actor, actor_input=actor_input)
+                driver = scrape.main(Actor=Actor, actor_input=actor_input)
                 title = driver.title
                 await Actor.push_data({'url': url, 'title': title})
             # try:

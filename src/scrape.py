@@ -81,6 +81,7 @@ def main(show_head=False, style=None, small_test=False,
                                                 driver=driver,
                                                 search_data_dict=search_data_dict,
                                                 search_item_ctr=item_ctr,
+                                                Actor=Actor
                                                 )
             """ SEARCH RESULT """
             # driver.close()  # main line 99
@@ -102,7 +103,7 @@ def main(show_head=False, style=None, small_test=False,
                                 actor_input=actor_input)
     emailer.send_all_emails(all_data=data)
 
-    return
+    return driver
 
 
 if __name__ == '__main__':
