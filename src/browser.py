@@ -138,7 +138,9 @@ class Browser:
 def get_element(driver: webdriver.Chrome, elt_name):
     """ given driver, get specific elt on page BY NAME """
     try:
-        elt = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.NAME, elt_name)))
+
+        sleep(5)
+        elt = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, elt_name)))
         # elt = driver.find_element(By.NAME, elt_name)
         return elt
     except NoSuchElementException:
@@ -247,8 +249,9 @@ def revert_to_search_res(driver: webdriver):
     return driver
 
 
-def enter_search_info(browser: Browser, driver: webdriver):
+def enter_search_info(browser: Browser, driver: webdriver, Actor):
     terms = [browser.DROPDOWN_1, browser.curr_sub_type, 2]  # controlled in main.py
+    Actor.log.info('url:' + str(driver.current_url))
     sleep(1)
     get_and_click_dropdown_index(driver=driver, elt_name="combox_doc_narrow",
                                  index=terms[0])
@@ -287,6 +290,7 @@ def run_search(browser: Browser,
                search_data_dict=None,
                search_item_ctr=None,
                ignore_zero_amt=True,
+               actor=None
                ):
     """
     >> given browser, driver, retrieve and append scrape results
@@ -298,7 +302,7 @@ def run_search(browser: Browser,
 
     driver.get(constants.URL_SEARCH_HOME)  # guarantee return home zzz
 
-    enter_search_info(browser=browser, driver=driver)
+    enter_search_info(browser=browser, driver=driver, Actor=actor)
     #
     sleep(2)
     search_res_page_ctr = 0

@@ -82,6 +82,7 @@ def main(show_head=False, style=None, small_test=False,
                                                 driver=driver,
                                                 search_data_dict=search_data_dict,
                                                 search_item_ctr=item_ctr,
+                                                actor=Actor
                                                 )
             """ SEARCH RESULT """
             # driver.close()  # main line 99
