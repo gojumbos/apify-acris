@@ -73,10 +73,19 @@ class Browser:
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
+        # DRB 6/6
+        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--proxy-server='direct://'")
+        chrome_options.add_argument("--proxy-bypass-list=*")
+        chrome_options.add_argument("--start-maximized")
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--ignore-certificate-errors')
         # DRB 6/5:
         self.driver = webdriver.Chrome(options=chrome_options)
 
-        Actor.log.info('line 79', 'driver run headless')
+        Actor.log.info('line 79 driver run headless')
 
         # sys.path.append(path) # path not needed??
         # op = webdriver.ChromeOptions()
